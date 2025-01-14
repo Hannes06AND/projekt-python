@@ -2,6 +2,8 @@ import random
 import os
 from time import sleep
 
+# lista text
+# text = [text1, text2, text3]
 text1 = ""
 for i in range(3):
     text1 += str(random.randint(1, 9))

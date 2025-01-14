@@ -8,3 +8,5 @@ någon form av tidsbegränsning innan siffersekvensen försvinner och då man m�
 - Slumpmässigt skapa en sekvens med siffor i en lista
 - Spara poäng i en variabel
 - Tidtagarur
+## 2025/01/14
+Idag har jag gjort det mesta i spelet. Jag har skapat en string för varje siffersekvens där de ökar i antal. Värden slumpas fram som sedan sparas i varje text. För att få det att fungera fick jag importera "random". Jag importerar även "sleep" från "time" för att kunna göra en nedräkning i programmet. Till sist importerar jag "os" för att kunna rensa konsolen i Windows.
