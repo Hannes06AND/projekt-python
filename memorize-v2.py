@@ -1,4 +1,4 @@
-import random
+'''import random
 import os
 from time import sleep
 
@@ -108,4 +108,57 @@ if start == "j":
     else:
         print("Fel svar! Börja om från början.")
 else: 
-    print("Kom tillbaka senare!")
+    print("Kom tillbaka senare!")'''
+
+import random
+import os
+from time import sleep
+
+def clear_console():
+    """Rensar terminalen."""
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def generate_numbers(length):
+    """Genererar en sträng med slumpmässiga siffror."""
+    return ''.join(str(random.randint(1, 9)) for _ in range(length))
+
+def memory_game():
+    """Huvudfunktionen för memory-spelet."""
+    level = 1  # Startnivå
+    max_level = 5  # Antal nivåer
+    play = input("Vill du spela? j/n: ")
+
+    if play.lower() != 'j':
+        print("Kom tillbaka senare!")
+        return
+
+    while level <= max_level:
+        # Generera en sekvens baserat på nivån
+        sequence = generate_numbers(level + 2)
+        print(f"Nivå {level}: Memorera följande siffror:")
+        print(sequence)
+        
+        # Vänta i 5 sekunder och rensa sedan terminalen
+        sleep(5)
+        clear_console()
+
+        # Fråga spelaren vad siffrorna var
+        guess = input("Vilka siffror såg du? ")
+
+        # Kontrollera om svaret är rätt
+        if guess == sequence:
+            print("Grattis, du svarade rätt!")
+            level += 1  # Gå vidare till nästa nivå
+            if level <= max_level:
+                continue_playing = input("Vill du fortsätta? j/n: ")
+                if continue_playing.lower() != 'j':
+                    print("Bra kämpat!")
+                    break
+        else:
+            print("Fel svar! Du kom till nivå", level)
+            break
+    else:
+        print("Grattis! Du klarade alla nivåer!")
+
+# Starta spelet
+memory_game()
