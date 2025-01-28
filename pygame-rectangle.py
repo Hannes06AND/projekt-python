@@ -30,6 +30,11 @@ done = False
  
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
+rect_x = 50
+rect_y = 50
+
+rect_change_x = 5
+rect_change_y = 5
  
 # -------- Main Program Loop -----------
 while not done:
@@ -44,13 +49,20 @@ while not done:
  
     # Here, we clear the screen to white. Don't put other drawing commands
     # above this, or they will be erased with this command.
+    screen.fill(BLACK)
  
     # If you want a background image, replace this clear with blit'ing the
     # background image.
-    screen.fill(WHITE)
  
     # --- Drawing code should go here
- 
+    pygame.draw.rect(screen, WHITE, [rect_x, rect_y, 50, 50])
+    rect_x += 5
+    rect_y += 5
+    rect_x += rect_change_x
+    rect_y += rect_change_y
+
+    if rect_y > 450:
+        rect_change_y = rect_change_y * -1
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
  
