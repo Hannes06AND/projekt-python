@@ -16,3 +16,5 @@ Idag känner jag mig mer eller mindre färdig med det första projektet, dvs mem
 - Klart: Slumpmässigt skapa en sekvens med siffror i en string (istället för lista)
 - Klart: Nedräkning (samt rensning av konsolen)
 - Inte klart: Spara poäng i en variabel (detta var onödigt eftersom spelet helt enkelt fortsätter om du svarar rätt)
+## 2025/02/03
+Idag har jag bytt från att använda Windows till Linux eftersom Git varken går att använda eller ominstallera i Windows. Sedan förra veckan har jag fått VSCodium att fungera i Linux, så när detta numera fungerar har jag nu fått installera pygame igen fast på Linux.
