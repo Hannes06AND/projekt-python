@@ -17,4 +17,4 @@ Idag känner jag mig mer eller mindre färdig med det första projektet, dvs mem
 - Klart: Nedräkning (samt rensning av konsolen)
 - Inte klart: Spara poäng i en variabel (detta var onödigt eftersom spelet helt enkelt fortsätter om du svarar rätt)
 ## 2025/02/03
-Idag har jag bytt från att använda Windows till Linux eftersom Git varken går att använda eller ominstallera i Windows. Sedan förra veckan har jag fått VSCodium att fungera i Linux, så när detta numera fungerar har jag nu fått installera pygame igen fast på Linux.
+Idag har jag bytt från att använda Windows till Linux eftersom Git varken går att använda eller ominstallera i Windows. Sedan förra veckan har jag fått VSCodium att fungera i Linux, så när detta numera fungerar har jag nu fått installera pygame igen fast på Linux. Jag har nu fått rektangeln i python att studsa i fönstret. Jag funderar över om jag ska fortsätta arbeta med den här uppgiften och göra några ändringar i koden eller om jag ska byta spel från pygame, alternativt börjar jag med ett annat mindre projekt.
