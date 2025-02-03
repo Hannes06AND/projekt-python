@@ -56,15 +56,16 @@ while not done:
  
     # --- Drawing code should go here
     pygame.draw.rect(screen, WHITE, [rect_x, rect_y, 50, 50])
-    rect_x += 5
-    rect_y += 5
     rect_x += rect_change_x
     rect_y += rect_change_y
 
-    if rect_y > 450:
-        rect_change_y = rect_change_y * -1
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
+
+    if rect_y > 450 or rect_y < 0:
+        rect_change_y = rect_change_y * -1
+    if rect_x > 650 or rect_x < 0:
+        rect_change_x = rect_change_x * -1
  
     # --- Limit to 60 frames per second
     clock.tick(60)
