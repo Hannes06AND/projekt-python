@@ -18,3 +18,6 @@ Idag känner jag mig mer eller mindre färdig med det första projektet, dvs mem
 - Inte klart: Spara poäng i en variabel (detta var onödigt eftersom spelet helt enkelt fortsätter om du svarar rätt)
 ## 2025/02/03
 Idag har jag bytt från att använda Windows till Linux eftersom Git varken går att använda eller ominstallera i Windows. Sedan förra veckan har jag fått VSCodium att fungera i Linux, så när detta numera fungerar har jag nu fått installera pygame igen fast på Linux. Jag har nu fått rektangeln i python att studsa i fönstret. Jag funderar över om jag ska fortsätta arbeta med den här uppgiften och göra några ändringar i koden eller om jag ska byta spel från pygame, alternativt börjar jag med ett annat mindre projekt.
+## 2025/02/04
+Idag har jag fortsatt med animeringen av rektangeln. Jag har nu lagt in tangent-input. Nu kan jag alltså styra rektangeln med pilarna och ändra riktning. Jag funderar på att göra ett slags ping-pong spel där man istället
+har statiska "pads" som rör sig upp och ned på vardera sida av fönstret som man ska försöka träffa med rektangeln. Problemet är däremot att jag inte kan återanvända variabler som berör hastigheten eftersom de redan används av rektangeln.
