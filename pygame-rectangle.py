@@ -34,10 +34,13 @@ rect_x = 50
 rect_y = 50
 
 pad1_x = 5
-pad1_y = 50
+pad1_y = 250
 
-pad2_x = 5
-pad2_y = 50
+y_pad1_speed = 3
+y_pad2_speed = -3
+
+pad2_x = 695
+pad2_y = 250
 
 rect_change_x = 10
 rect_change_y = 10
@@ -77,6 +80,9 @@ while not done:
     rect_x += x_speed
     rect_y += y_speed
  
+    pad1_y += y_pad1_speed
+    pad2_y += y_pad2_speed
+
     # --- Screen-clearing code goes here
  
     # Here, we clear the screen to white. Don't put other drawing commands
@@ -87,13 +93,11 @@ while not done:
     # background image.
  
     # --- Drawing code should go here
-    pygame.draw.rect(screen, WHITE, [rect_x, rect_y, 50, 50])
+    rectangle = pygame.draw.rect(screen, WHITE, [rect_x, rect_y, 50, 50])
     pygame.draw.rect(screen, GREEN, [rect_x + 10, rect_y + 10 ,30, 30])
     # --- Drawing code for pads
-    pygame.draw.rect(screen, RED, [pad1_x, pad2_y, 5, 100])
-    pygame.draw.rect(screen, RED, [pad2_x, pad2_y, 5, 100])
-    #rect_x += rect_change_x
-    #rect_y += rect_change_y
+    pad1 = pygame.draw.rect(screen, RED, [pad1_x, pad1_y, 5, 100])
+    pad2 = pygame.draw.rect(screen, RED, [pad2_x, pad2_y, 5, 100])
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
@@ -101,6 +105,16 @@ while not done:
     if rect_y > 450 or rect_y < 0:
         y_speed = y_speed * -1
     if rect_x > 650 or rect_x < 0:
+        x_speed = x_speed * -1
+
+    if pad1_y > 450 or pad1_y < 0:
+       y_pad1_speed = y_pad1_speed * -1 
+    
+    if pad2_y > 450 or pad2_y < 0:
+        y_pad2_speed = y_pad2_speed * -1
+    
+    # Bouncing off pads
+    if rectangle == pad1 or rectangle == pad2:
         x_speed = x_speed * -1
     # --- Limit to 60 frames per second
     clock.tick(60)
