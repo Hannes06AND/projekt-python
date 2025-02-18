@@ -10,7 +10,8 @@
 """
  
 import pygame
- 
+import math
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -44,8 +45,8 @@ pad2_y = 250
 
 rect_change_x = 10
 rect_change_y = 10
-x_speed = 0
-y_speed = 0
+x_speed = 2
+y_speed = 2
  
 # -------- Main Program Loop -----------
 while not done:
@@ -60,13 +61,13 @@ while not done:
             # Figure out if it was an arrow key. If so
             # adjust speed.
             if event.key == pygame.K_LEFT:
-                x_speed = -3
+                x_speed = -math.fabs(x_speed)
             elif event.key == pygame.K_RIGHT:
-                x_speed = 3
+                x_speed = math.fabs(x_speed)
             elif event.key == pygame.K_UP:
-                y_speed = -3
+                y_speed = -math.fabs(y_speed)
             elif event.key == pygame.K_DOWN:
-                y_speed = 3
+                y_speed = math.fabs(y_speed)
     
         # User let up on a key
         '''elif event.type == pygame.KEYUP:
@@ -95,27 +96,32 @@ while not done:
     # --- Drawing code should go here
     rectangle = pygame.draw.rect(screen, WHITE, [rect_x, rect_y, 50, 50])
     pygame.draw.rect(screen, GREEN, [rect_x + 10, rect_y + 10 ,30, 30])
-    # --- Drawing code for pads
     pad1 = pygame.draw.rect(screen, RED, [pad1_x, pad1_y, 5, 100])
     pad2 = pygame.draw.rect(screen, RED, [pad2_x, pad2_y, 5, 100])
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
 
-    if rect_y > 450 or rect_y < 0:
+    '''if rect_y > 450 or rect_y < 0:
         y_speed = y_speed * -1
     if rect_x > 650 or rect_x < 0:
-        x_speed = x_speed * -1
+        x_speed = x_speed * -1'''
 
     if pad1_y > 450 or pad1_y < 0:
        y_pad1_speed = y_pad1_speed * -1 
     
     if pad2_y > 450 or pad2_y < 0:
         y_pad2_speed = y_pad2_speed * -1
-    
-    # Bouncing off pads
-    if rectangle == pad1 or rectangle == pad2:
-        x_speed = x_speed * -1
+
+    # Studsar av botten eller taket
+    if rect_y <= 0 or rect_y >= 450:
+        y_speed *= -1
+
+    # Studsar från pads
+    if rectangle.colliderect(pad1) or rectangle.colliderect(pad2):
+        x_speed *= -1.05
+        y_speed *= 1.05
+
     # --- Limit to 60 frames per second
     clock.tick(60)
  
