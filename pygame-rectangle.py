@@ -24,10 +24,16 @@ pygame.init()
 size = (700, 500)
 screen = pygame.display.set_mode(size)
  
-pygame.display.set_caption("My Game")
+pygame.display.set_caption("Reverse Pong")
  
 # Loop until the user clicks the close button.
 done = False
+
+# Add visual elements to the game
+font = pygame.font.Font(None, 36)
+text = font.render('Game Over!', True, BLACK, WHITE)
+textRect = text.get_rect()
+textRect.center = (700 // 2, 500 // 2)
  
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
@@ -106,6 +112,12 @@ while not done:
         y_speed = y_speed * -1
     if rect_x > 650 or rect_x < 0:
         x_speed = x_speed * -1'''
+    
+    if rect_x > 650 or rect_x < 0:
+        # Game over
+         screen.blit(text, textRect)
+         pygame.display.flip()
+         done = True
 
     if pad1_y > 450 or pad1_y < 0:
        y_pad1_speed = y_pad1_speed * -1 
@@ -125,5 +137,11 @@ while not done:
     # --- Limit to 60 frames per second
     clock.tick(60)
  
+done = False
+while not done:
+    # --- Main event loop
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
 # Close the window and quit.
 pygame.quit()
