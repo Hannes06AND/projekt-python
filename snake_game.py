@@ -40,6 +40,13 @@ snake_radius = (snake_image.get_width() + snake_image.get_height()) / 4
 plum_image = pygame.image.load("img/plum.png")
 plums = []
 plum_radius = (plum_image.get_width() + plum_image.get_height()) / 4
+# Add points
+points = 0
+# Add textbox
+font = pygame.font.Font(None, 36)
+text = font.render("Score:" + str(points), True, BLACK, WHITE)
+textRect = text.get_rect()
+textRect.center = (700 // 2, 500 // 2)
  
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
@@ -72,9 +79,6 @@ while is_running:
         snake_x = 600
     if snake_x > 600:
         snake_x= 0
-    
-    # Add points and display score
-    points = ""
 
     # plums
     # Chance of having a new plum.
@@ -89,17 +93,17 @@ while is_running:
         plum[1] += plum[2]
         # Increase the speed of the plum.
         plum[2] += 0.2
-        # Remove plums that have gone off the screen.
+        # Remove plums that have gone off the screen and display score.
         if plum[1] > 800:
             plums.remove(plum)
         # Check for collisions with the snake.
         if collides(snake_x, snake_y, snake_radius, 
                     plum[0], plum[1], plum_radius):
             plums.remove(plum)
-            print("Yum!")
-        
-
-        
+            print("Yum!",)
+            points += 1
+            pygame.display.flip()
+            done = True
     
     # --- Screen-clearing code goes here
  
@@ -115,6 +119,9 @@ while is_running:
     for plum in plums:
         screen.blit(plum_image, [plum[0], plum[1]])
  
+    text = font.render("Score:" + str(points), True, BLACK, WHITE)
+    textRect = text.get_rect()
+    screen.blit(text, textRect)
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
  
@@ -122,3 +129,4 @@ while is_running:
     clock.tick(60)
  
 # Close the window and quit.
+pygame.quit()
