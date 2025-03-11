@@ -38,6 +38,8 @@ snake_last_direction = "right"
 snake_radius = (snake_image.get_width() + snake_image.get_height()) / 4
 
 plum_image = pygame.image.load("img/plum.png")
+brick_image = pygame.image.load("img/brick_brown_0.png")
+bricks = []
 plums = []
 plum_radius = (plum_image.get_width() + plum_image.get_height()) / 4
 # Add points
@@ -47,7 +49,9 @@ font = pygame.font.Font(None, 36)
 text = font.render("Score:" + str(points), True, BLACK, WHITE)
 textRect = text.get_rect()
 textRect.center = (700 // 2, 500 // 2)
- 
+
+brick_radius = (brick_image.get_width() + brick_image.get_height()) / 4
+
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
  
@@ -68,6 +72,8 @@ while is_running:
         if (snake_last_direction == "right"):
             snake_image = pygame.transform.flip(snake_image, True, False)
             snake_last_direction = "left"
+        if keys[pygame.K_LEFT]:
+            snake_x -= 7
 
     if keys[pygame.K_RIGHT]:
         snake_x += 5
@@ -103,7 +109,21 @@ while is_running:
             print("Yum!",)
             points += 1
             pygame.display.flip()
-            done = True
+    
+    if (random.randint(0, 300) < 2):
+        brick_x = random.randint(0, 600)
+        bricks.append([brick_x, 0, 0])
+
+    for brick in bricks:
+        brick[1] += brick[2]
+        brick[2] += 0.2
+        if brick[1] > 800:
+            bricks.remove(brick)
+        if collides(snake_x, snake_y, snake_radius, brick[0], brick[1], brick_radius):
+            bricks.remove(brick)
+            print('Ouch!')
+            pygame.display.flip()
+            is_running = False
     
     # --- Screen-clearing code goes here
  
@@ -118,6 +138,8 @@ while is_running:
     screen.blit(snake_image, [snake_x, snake_y])
     for plum in plums:
         screen.blit(plum_image, [plum[0], plum[1]])
+    for brick in bricks:
+        screen.blit(brick_image, [brick[0], brick[1]])
  
     text = font.render("Score:" + str(points), True, BLACK, WHITE)
     textRect = text.get_rect()
