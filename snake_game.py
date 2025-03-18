@@ -68,15 +68,13 @@ while is_running:
     # --- Game logic should go here
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
-        snake_x -= 5
+        snake_x -= 6
         if (snake_last_direction == "right"):
             snake_image = pygame.transform.flip(snake_image, True, False)
             snake_last_direction = "left"
-        if keys[pygame.K_LEFT]:
-            snake_x -= 7
 
     if keys[pygame.K_RIGHT]:
-        snake_x += 5
+        snake_x += 6
         if (snake_last_direction == "left"):
             snake_image = pygame.transform.flip(snake_image, True, False)
             snake_last_direction = "right"

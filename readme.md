@@ -1,5 +1,7 @@
 # Dokumentation projekt
 ====================
+## 2025/03/18
+Vid detta tillfälle har jag fortsatt med "maze.py" och uppgifterna. Jag har lagt till bild-filerna för spelaren och objekten som spelaren ska plocka upp. Spelaren kan nu röra sig i alla riktningar, detta gjorde jag på ungefär samma sätt som i tidigare spel. Jag kommenterade ut "else-satsen" som fanns i den första if-satsen då den verkade motverka effekten av tangenterna och skjuta spelaren tillbaka i rutnätet. Spelaren stoppas även när den kommer i kontakt med väggarna. Sedan skapade jag en lista för att skapa "items" som spelaren skulle plocka upp och laddade in bilden till objekten. Jag försökte att rita upp föremålen på skärmen efter att väggarna ritas ut men hittills har det inte fungerat.
 ## 2025/03/11
 Idag har jag lagt till en tegelsten som faller tillsammans med plommonen. Jag använde koden för "plums" som referens och ändrade sannolikheten för att de ska ritas på skärmen. När man träffas av tegelstenen så avslutas spelet. Möjligtvis borde jag lägga till en sluttext istället. Jag ville även öka hastigheten på ormen till vänster och höger när man dubbelklickar på tangenterna. Jag ville nesta en if-sats under den if-sats som påverkade rörelsen då man trycker på tangenten. Tanken var att efter att man har tryckt ner tangenten och sedan trycker ner den igen, ska hastigheten öka. Problemet är att if-satsen gäller då man håller in tangenten, vilket gör att hastigheten ökar till den högsta direkt.
 ## 2025/03/03
