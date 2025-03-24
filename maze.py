@@ -3,9 +3,6 @@ Maze Game
 Loaded from a file.
 
 Tasks:
-4. Add objects to pick up. Use: chrystal_wall_lightmagenta.png
-5. Make the player pick up the object when it collides with it.
-6. Make the object disappear when the player picks it up.
 7. Add score to the game. Show the score on the screen.
 8. When all objects are picked up, show a message on the screen.
 9. Add monsters that move around in the maze. 
@@ -56,6 +53,9 @@ player = {}
 player['image'] = player_image
 player['speed'] = 4
 
+# Lista för objekt som kan plockas upp
+items = []
+
 # Read the maze from the file.
 
 file = open('maze.txt', 'r')
@@ -76,6 +76,9 @@ while len(line) > 1:
         elif char == 'e':
             player['x'] = x
             player['y'] = y
+        elif char == 'o':  # Vi antar att o är objekt i filen
+            item = {'x': x, 'y': y, 'image': item_image}
+            items.append(item)
 
         x += wall_size
     x = 0
@@ -89,26 +92,6 @@ size = (maze_width * wall_size, maze_height * wall_size)
 screen = pygame.display.set_mode(size)
 
 pygame.display.set_caption("Maze Game")
-
-# Lista för objekt som kan plockas upp
-items = []
-
-# Lägg till objekt från maze.txt
-file = open('maze.txt', 'r')
-line = file.readline()
-x = 0
-y = 0
-while len(line) > 1:
-    for char in line:
-        if char == 'o':  # Vi antar att 'o' representerar objekt i filen
-            item = {'x': x, 'y': y, 'image': item_image}
-            items.append(item)
-        x += wall_size
-    x = 0
-    y += wall_size
-    line = file.readline()
-
-file.close()
 
 # --- Game time
 clock = pygame.time.Clock()

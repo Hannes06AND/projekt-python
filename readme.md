@@ -1,5 +1,7 @@
 # Dokumentation projekt
 ====================
+## 2025/03/24
+Nu har jag felsökt problemet med "items" som spelaren ska plocka upp. Eftersom "while"-slingan specificerar att där "o" finns i textfilen, ska det läggas in en kristall. Jag hade missat att lägga till "o" på de ställen där jag ville ha kristallerna. Jag trodde att koden skulle lägga till bokstäverna i filen och sedan rita upp bilden.
 ## 2025/03/18
 Vid detta tillfälle har jag fortsatt med "maze.py" och uppgifterna. Jag har lagt till bild-filerna för spelaren och objekten som spelaren ska plocka upp. Spelaren kan nu röra sig i alla riktningar, detta gjorde jag på ungefär samma sätt som i tidigare spel. Jag kommenterade ut "else-satsen" som fanns i den första if-satsen då den verkade motverka effekten av tangenterna och skjuta spelaren tillbaka i rutnätet. Spelaren stoppas även när den kommer i kontakt med väggarna. Sedan skapade jag en lista för att skapa "items" som spelaren skulle plocka upp och laddade in bilden till objekten. Jag försökte att rita upp föremålen på skärmen efter att väggarna ritas ut men hittills har det inte fungerat.
 ## 2025/03/11
