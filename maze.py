@@ -5,15 +5,13 @@ Loaded from a file.
 Tasks:
 7. Add score to the game. Show the score on the screen.
 8. When all objects are picked up, show a message on the screen.
-9. Add monsters that move around in the maze. 
-   Random movement of your choice. Use: ogre_old.png
-10. Game over if the player collides with a monster.
 
 Extra tasks:
 1. Show the doors in the maze.
 2. If the player enters a door, the player is teleported to another door.
 '''
 import pygame
+import random
 
 
 # --- Define helper functions
@@ -53,6 +51,10 @@ player = {}
 player['image'] = player_image
 player['speed'] = 4
 
+# Skapa monster
+monster_image = pygame.image.load("img/ogre_old.png")
+monsters = []
+
 # Lista för objekt som kan plockas upp
 items = []
 
@@ -76,7 +78,15 @@ while len(line) > 1:
         elif char == 'e':
             player['x'] = x
             player['y'] = y
-        elif char == 'o':  # Vi antar att o är objekt i filen
+        elif char == 'm':  # 'm' för monster
+            monsters.append({
+                'x': x,
+                'y': y,
+                'image': monster_image,
+                'direction': random.choice([(1, 0), (-1, 0), (0, 1), (0, -1)]),
+                'speed': 3
+        })
+        elif char == 'o':  # 'o' representerar objekt eller kristaller i filen
             item = {'x': x, 'y': y, 'image': item_image}
             items.append(item)
 
@@ -129,6 +139,22 @@ while is_running:
         # snap player to grid
         player['x'] = round(player['x'] / wall_size) * wall_size
         player['y'] = round(player['y'] / wall_size) * wall_size'''
+
+    # Rörelse för monster
+    for monster in monsters:
+        if random.random() < 0.02:
+            monster['direction'] = random.choice([(1, 0), (-1, 0), (0, 1), (0, -1)])
+
+        monster['x'] += monster['direction'][0] * monster['speed']
+        monster['y'] += monster['direction'][1] * monster['speed']
+
+        if get_one_colliding_object(monster, walls):
+            monster['x'] -= monster['direction'][0] * monster['speed']
+            monster['y'] -= monster['direction'][1] * monster['speed']
+            monster['direction'] = random.choice([(1, 0), (-1, 0), (0, 1), (0, -1)])
+        if get_one_colliding_object(player, [monster]):
+            print("Game Over!")
+            is_running = False
     
     check_item_collision()
 
@@ -144,6 +170,10 @@ while is_running:
     # Rita ut objekten
     for item in items:
         screen.blit(item['image'], (item['x'], item['y']))
+
+    # Rita monster
+    for monster in monsters:
+        screen.blit(monster['image'], (monster['x'], monster['y']))
 
     screen.blit(player_image, [player['x'], player['y']])
     pygame.display.update()  # or pygame.display.flip()
