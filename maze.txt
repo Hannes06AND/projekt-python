@@ -1,12 +1,14 @@
-xdxxxxxxxxxxx
-x  m    o  mx
-x xx xxx xx x
-x x       xox
-x x xxxxx x x
-x o xd e  x x
-x x     x  ox
-x x xxxxx x x
-x x     o x x
-xoxxx x xxd x
-xmo         x
-xxxxxxxxxxxxx
+xdxxxxxxxxxxxxxxxxxx
+x   m     o       mx
+x xx xxx xx xxx x  x
+x    p           x x
+x x          o   x x
+x xxxx xxx xxx x x x
+x x m            x x
+x x x x x x x  x x x
+x x x x x xxx  o x x
+x x x x x  x x  x  x
+x x   x x xx x xx  x
+x x   m          o x
+x xx  xxx x xx     x
+xxxxxxxxxxxxxxxxxxxx

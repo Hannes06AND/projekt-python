@@ -75,9 +75,10 @@ while len(line) > 1:
             wall['y'] = y
             wall['image'] = wall_image
             walls.append(wall)
-        elif char == 'e':
+        elif char == 'p':
             player['x'] = x
             player['y'] = y
+            print(player)
         elif char == 'm':  # 'm' för monster
             monsters.append({
                 'x': x,
@@ -152,6 +153,7 @@ while is_running:
             monster['x'] -= monster['direction'][0] * monster['speed']
             monster['y'] -= monster['direction'][1] * monster['speed']
             monster['direction'] = random.choice([(1, 0), (-1, 0), (0, 1), (0, -1)])
+            
         if get_one_colliding_object(player, [monster]):
             print("Game Over!")
             is_running = False
