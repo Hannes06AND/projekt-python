@@ -8,7 +8,6 @@ Tasks:
 
 Extra tasks:
 1. Show the doors in the maze.
-2. If the player enters a door, the player is teleported to another door.
 '''
 import pygame
 import random
@@ -55,11 +54,14 @@ player['speed'] = 4
 monster_image = pygame.image.load("img/ogre_old.png")
 monsters = []
 
+# Lägga till dörrar
+door_image = pygame.image.load("img/open_door.png")
+doors = []
+
 # Lista för objekt som kan plockas upp
 items = []
 
 # Read the maze from the file.
-
 file = open('maze.txt', 'r')
 line = file.readline()
 maze_width = len(line) - 1  # Do not count the newline character.
@@ -69,7 +71,7 @@ y = 0
 while len(line) > 1:
     maze_height += 1
     for char in line:
-        if char == 'x' or char == 'd':
+        if char == 'x':
             wall = {}
             wall['x'] = x
             wall['y'] = y
@@ -79,6 +81,9 @@ while len(line) > 1:
             player['x'] = x
             player['y'] = y
             print(player)
+        elif char == 'd': # 'd' för dörrar
+            door = {'x': x, 'y': y, 'image': door_image}
+            doors.append(door)
         elif char == 'm':  # 'm' för monster
             monsters.append({
                 'x': x,
@@ -103,6 +108,10 @@ size = (maze_width * wall_size, maze_height * wall_size)
 screen = pygame.display.set_mode(size)
 
 pygame.display.set_caption("Maze Game")
+
+# Cooldown för teleportering
+teleport_cooldown = 0  # Hur lång tid kvar tills teleport tillåts igen
+cooldown_duration = 30  # Frames
 
 # --- Game time
 clock = pygame.time.Clock()
@@ -141,6 +150,9 @@ while is_running:
         player['x'] = round(player['x'] / wall_size) * wall_size
         player['y'] = round(player['y'] / wall_size) * wall_size'''
 
+    if teleport_cooldown > 0:
+        teleport_cooldown -= 1
+
     # Rörelse för monster
     for monster in monsters:
         if random.random() < 0.02:
@@ -157,8 +169,19 @@ while is_running:
         if get_one_colliding_object(player, [monster]):
             print("Game Over!")
             is_running = False
-    
+
     check_item_collision()
+
+    # Kolla om spelaren kolliderar med en dörr och teleportera till den andra
+    if teleport_cooldown == 0:
+        colliding_door = get_one_colliding_object(player, doors)
+        if colliding_door:
+            for other_door in doors:
+                if other_door != colliding_door:
+                    player['x'] = other_door['x']
+                    player['y'] = other_door['y']
+                    teleport_cooldown = cooldown_duration
+                    break
 
     # --- Screen-clearing code goes here
     # fill widh sand
@@ -176,6 +199,10 @@ while is_running:
     # Rita monster
     for monster in monsters:
         screen.blit(monster['image'], (monster['x'], monster['y']))
+    
+    # Rita dörrar
+    for door in doors:
+        screen.blit(door['image'], (door['x'], door['y']))
 
     screen.blit(player_image, [player['x'], player['y']])
     pygame.display.update()  # or pygame.display.flip()
