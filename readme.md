@@ -10,7 +10,7 @@ Idag har jag bestämt mig för att överge pygame och börja med project euler. 
 <li>Fallande objekt</li>
 <li>Slumpmässig rörelse</li>
 <li>Läsa från textfiler</li>
-<li>'Teleportering</li>
+<li>'Teleportering'</li>
 </ul>
 
 ## 2025/04/07
