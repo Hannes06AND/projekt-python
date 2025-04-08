@@ -2,7 +2,7 @@
 ====================
 ## 2025/04/08
 Idag har jag bestämt mig för att överge pygame och börja med project euler. Jag har använt mig mycket av färdig kod och funktioner från pygame och vill nu istället skriva lite mer egen kod.
-## Detta har jag gjort i pygame:
+### Detta har jag gjort i pygame:
 <ul>
 <li>Koda rörelse och hastighet i x- och y-led</li>
 <li>Kollisionshantering</li>
@@ -12,6 +12,7 @@ Idag har jag bestämt mig för att överge pygame och börja med project euler. 
 <li>Läsa från textfiler</li>
 <li>'Teleportering</li>
 </ul>
+
 ## 2025/04/07
 Förra veckan gjorde jag en ny textfil till spelet 'maze' alltså en ny karta. Efter allt som jag tidigare har gjort, har jag ett par uppgifter kvar i python-filen, men dessa har jag gjort tidigare. Till exempel att lägga till score eller visa ett meddelande. Jag kanske vill lägga till dörrar eller 'portaler' så att spelaren kan teleportera sig tvärs över kartan. Bortsett från detta känner jag mig färdig med 'maze.py'. Efter dagens tillfälle har jag fått teleportering att fungera i spelet. Jag valde ut en bild på en öppen dörr som ska representera en portal i spelet från Rikards repository. Sedan laddade jag in bilden i python-filen som vanligt, skapade en lista för dörrar och kompletterade min if-sats med kod som ska leta efter bokstaven 'd' och sedan ladda in en dörr. Sedan lade jag in ett 'd' i varje hörn av textfilen. Dörrarna ska fungera som portaler, om man går igenom den ena dörren, kommer man ut ur den andra och tvärtom. Ett problem som uppstod var att spelaren flimrade fram och tillbaka mellan dörrarna eftersom spelaren hamnade i en loop av teleportering. Detta berodde på att spelaren hela tiden kolliderade med en dörr. Därför behövde jag implementera någon form av 'cooldown' då teleportering inte fungerar för att man ska kunna gå ur dörren. Däremot när cooldown = 0 fungerar if-satsen med kollision mellan dörr och spelare. Med detta klart, känner jag mig nog nöjd med detta spel.
 ## 2025/03/25
