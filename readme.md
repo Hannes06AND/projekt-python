@@ -6,7 +6,7 @@ Idag har jag bestämt mig för att överge pygame och börja med project euler. 
 <ul>
 <li>Koda rörelse och hastighet i x- och y-led</li>
 <li>Kollisionshantering</li>
-<li>Lägga in 'score'</li>
+<li>Lägga in 'score' och textrutor</li>
 <li>Fallande objekt</li>
 <li>Slumpmässig rörelse</li>
 <li>Läsa från textfiler</li>
