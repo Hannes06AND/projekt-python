@@ -2,7 +2,7 @@
 ====================
 ## 2025/04/22
 Idag har jag börjat med Project Euler och jag började med den första uppgiften.
-<strong>Uppgift:</strong>If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.
+<strong>Uppgift: If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.</strong>
 <br>
 Min första tanke var att använda "for i in range" för att sedan kunna ändra intervallet efter behag. Sedan lade jag in en if-sats i "for" där jag ville att om ett tal i intervallet som multipliceras med 3 eller 5 är mindre än 10, ska det adderas till variabeln "summa". Detta märkte jag dock, var fel tänkt eftersom summan i intervallet 1-9 inte blev 23. Det jag egentligen ville göra var att se om ett specifikt tal i intervallet är jämt delbart med antingen 3 eller 5. På så sätt kunde jag identifiera de tal som kan multipliceras med något tal, men ändå vara mindre än 10. Med detta problemet löst, ändrade jag intervallet för att sedan kunna få fram summan av alla multiplar av 3 eller 5 mellan 1 och 999. Så löste jag den första uppgiften. 
 
